@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2180.robot;
 
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -16,6 +18,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class Robot extends IterativeRobot {
 	
 	Joystick stick = new Joystick(0);
+	
+	CANTalon shooter = new CANTalon (30);
 	
 
 	/**
@@ -40,6 +44,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		// Drive for 2 seconds
+		//Alex
 		 // stop robot
 		
 	}
@@ -57,6 +62,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		//shooter = stick.getRawAxis(1);
+		shooter.set(stick.getRawAxis(1));
 		
 	}
 
