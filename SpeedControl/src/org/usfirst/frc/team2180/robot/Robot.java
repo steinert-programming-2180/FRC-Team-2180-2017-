@@ -21,10 +21,10 @@ public class Robot extends IterativeRobot {
 	Joystick stick = new Joystick(0);
 	
 	JoystickButton half = new JoystickButton(stick, 1);
-	JoystickButton sixty = new JoystickButton(stick,2);
-	JoystickButton seventy = new JoystickButton(stick,3);
-	JoystickButton eighty = new JoystickButton(stick,4);
-	JoystickButton ninety = new JoystickButton(stick,5);
+	JoystickButton sixty = new JoystickButton(stick, 2);
+	JoystickButton seventy = new JoystickButton(stick, 3);
+	JoystickButton eighty = new JoystickButton(stick, 4);
+	JoystickButton ninety = new JoystickButton(stick, 5);
 	
 	
 	CANTalon Shooter = new CANTalon(30);
