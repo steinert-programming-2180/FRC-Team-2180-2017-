@@ -1,9 +1,12 @@
 package org.usfirst.frc.team2180.robot;
 
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -16,6 +19,15 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class Robot extends IterativeRobot {
 	
 	Joystick stick = new Joystick(0);
+	
+	JoystickButton half = new JoystickButton(stick, 1);
+	JoystickButton sixty = new JoystickButton(stick,2);
+	JoystickButton seventy = new JoystickButton(stick,3);
+	JoystickButton eighty = new JoystickButton(stick,4);
+	JoystickButton ninety = new JoystickButton(stick,5);
+	
+	
+	CANTalon Shooter = new CANTalon(30);
 	
 
 	/**
@@ -56,6 +68,17 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		
+		//50%
+		
+		
+		//60%
+		
+		//70%
+		
+		//80%
+		
+		//90%
 		
 	}
 
