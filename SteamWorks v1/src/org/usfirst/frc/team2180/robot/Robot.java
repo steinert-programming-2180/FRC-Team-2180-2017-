@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2180.robot;
 
+import org.usfirst.frc.team2180.commands.EndGame;
+
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -7,7 +9,9 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -25,20 +29,22 @@ public class Robot extends IterativeRobot {
 	Joystick left2;
 	Joystick right2;
 	
-	JoystickButton open1;
-	JoystickButton close1;
-	JoystickButton open2;
-	JoystickButton close2;
-	JoystickButton open3;
-	JoystickButton close3;
-	JoystickButton open4;
-	JoystickButton close4;
+	Button open1,
+	 	   close1,
+		   open2,
+		   close2,
+		   open3,
+		   close3,
+		   open4,
+		   close4;
 	
 	
 	CANTalon leftMotor;
 	CANTalon rightMotor;
 	
-	CANTalon randomMotor;
+	CANTalon shooterMotor;
+	
+	CANTalon winch;
 	
 	int brake;
 	
@@ -75,7 +81,9 @@ public class Robot extends IterativeRobot {
     	leftMotor = new CANTalon(10);
     	rightMotor = new CANTalon(20);
     	
-    	randomMotor = new CANTalon(30);
+    	shooterMotor = new CANTalon(30);
+    	
+    	winch = new CANTalon(40);
     	
     	solenoid1 = new DoubleSolenoid (0,0,1);
     	solenoid2 = new DoubleSolenoid (0,2,3);
@@ -89,6 +97,7 @@ public class Robot extends IterativeRobot {
     /**
      * This function is run once each time the robot enters autonomous mode
      */
+    
     public void autonomousInit() {
     	autoLoopCounter = 0;
     }
@@ -98,7 +107,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
     	if(autoLoopCounter < 100) //Check if we've completed 100 loops (approximately 2 seconds)
-    							  //50 loops (approximately 1 second)
+    							  //50 loops (approximately 1 second) Alex
 		{
 			myRobot.drive(-0.5, 0.0); 	// drive forwards half speed
     		//myRobot.tankDrive(leftMotor, rightMotor);
@@ -127,6 +136,15 @@ public class Robot extends IterativeRobot {
     		
     	}*/
     	
+    	shooterMotor.set(left.getRawAxis(0));
+    	/*
+    	 brakeLeft = new JoystickButton(left, 1);
+        brakeLeft.whileHeld(new Brake());
+    	 */
+    	
+    	//open1 = new JoystickButton (left,1);
+    	//open1.whenPressed(EndGame());
+    	
     	//open1.whenPressed(solenoid1.set(DoubleSolenoid.Value.kForward()));
     	
     	
@@ -143,7 +161,9 @@ public class Robot extends IterativeRobot {
     	solenoid4.set(DoubleSolenoid.Value.kReverse);*/
     }
     
-    /**
+   
+
+	/**
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
