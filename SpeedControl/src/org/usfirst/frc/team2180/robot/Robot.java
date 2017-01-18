@@ -18,16 +18,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Robot extends IterativeRobot {
 	
-	Joystick stick = new Joystick(0);
 	
-	JoystickButton half = new JoystickButton(stick, 1);
-	JoystickButton sixty = new JoystickButton(stick, 2);
-	JoystickButton seventy = new JoystickButton(stick, 3);
-	JoystickButton eighty = new JoystickButton(stick, 4);
-	JoystickButton ninety = new JoystickButton(stick, 5);
-	
-	
-	CANTalon Shooter = new CANTalon(30);
+	//public static org.usfirst.frc.team2180.commands.half half;
 	
 
 	/**
@@ -36,6 +28,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		//RobotMap.init;
+		//half = new Half();
+		
 	}
 
 	/**
