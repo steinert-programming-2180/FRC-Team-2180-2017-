@@ -137,6 +137,7 @@ public class Robot extends IterativeRobot {
     	}*/
     	
     	shooterMotor.set(left.getRawAxis(0));
+    	
     	/*
     	 brakeLeft = new JoystickButton(left, 1);
         brakeLeft.whileHeld(new Brake());
