@@ -63,7 +63,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		//shooter = stick.getRawAxis(1);
-		shooter.set(stick.getRawAxis(1));
+		shooter.set(stick.getRawAxis(1)*.65);
 		
 	}
 
