@@ -4,6 +4,15 @@ sys.path.append('/usr/local/lib/python3.4/site-packages')
 import numpy as np
 import argparse
 import cv2
+import sys
+import time
+from networktables import NetworkTables
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+NetworkTables.initialize(server='172.22.11.2')
+
+sd = NetworkTables.getTable("SmartDashboard")
 
 count = 1
 
@@ -37,6 +46,8 @@ while True:
 
 	cv2.imshow("Detect Tape", image)
 
+	sd.putNumber('maxLoc x', maxLoc[0])
+	sd.putNumber('maxLoc y', maxLoc[1])
 	
 	if cv2.waitKey(1) & 0xFF == ord('q'):
 		break
