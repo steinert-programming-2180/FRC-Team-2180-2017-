@@ -1,10 +1,9 @@
-#this works!!!
-#message to future self: incorporate NetworkTables at the meeting
 import sys
 sys.path.append('/usr/local/lib/python3.4/site-packages')
 
 import cv2
 import numpy as np
+import socket
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import time
@@ -50,7 +49,7 @@ for rawFrame in camera.capture_continuous(rawCapture, format="bgr", use_video_po
             print(str(count) + ": (" + str(sd.getNumber('center x')) + ', ' + str(sd.getNumber('center y')) + ')')
             print(str(w) + 'x' + str(h))
             	
-    cv2.imshow('Frame', frame)
+    #cv2.imshow('Frame', frame)
     count += 1
     
     rawCapture.truncate(0)
