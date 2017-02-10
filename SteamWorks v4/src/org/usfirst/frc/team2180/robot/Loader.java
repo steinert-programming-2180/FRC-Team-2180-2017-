@@ -12,7 +12,7 @@ public Loader(){
 		
 	}
 	
-	protected void executed(){
+	protected void execute(){
 		Robot.loader.set(0.5);
 	}
 	
