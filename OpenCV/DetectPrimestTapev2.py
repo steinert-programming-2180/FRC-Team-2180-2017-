@@ -5,10 +5,19 @@ sys.path.append('/usr/local/lib/python3.4/site-packages')
 
 import cv2
 import numpy as np
+import time
+from networktables import NetworkTables
+import logging
+logging.basicConfig(level=logging.DEBUG) 
 
 cap = cv2.VideoCapture(0)
-count = 1
 
+NetworkTables.initialize(server = '10.21.80.2')
+sd = NetworkTables.getTable('SmartDashboard')
+
+time.sleep(0.1)
+
+count = 1
 while True:
     _, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -31,13 +40,23 @@ while True:
             cv2.circle(frame, center, 5, (255, 0, 0), -1)
             height, width, channels = frame.shape
             cv2.circle(frame, (int(width/2), int(height/2)), 5, (0, 255, 0), -1)
+            sd.putNumber('center x', center[0])
+            sd.putNumber('center y', center[1])
+            print(str(count) + ": (" + str(sd.getNumber('center x')) + ', ' + str(sd.getNumber('center y')) + ')')
+            print(str(w) + 'x' + str(h))
+            
+            if center[0] < width / 2:
+                print('Left')
+            elif center[0] > width / 2:
+                print('Right')
+            else:
+                print('Center')
             	
     cv2.imshow('Frame', frame)
-    print(str(count) + ": " + str(center))
     count += 1
 	
     if cv2.waitKey(1) & 0xFF == ord('q'):
 	    break
-		
-cap.release()
+
+cap.release()	    
 cv2.destroyAllWindows()
