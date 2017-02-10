@@ -22,12 +22,12 @@ public class Entry extends Command {
 		SmartDashboard.putString("DB/String 0", fs1);
 	}
 	
-	protected void initalize(){
+	protected void initialize(){
 		
 		
 	}
 	
-	protected void executed(){
+	protected void execute(){
 		
 	}
 	
