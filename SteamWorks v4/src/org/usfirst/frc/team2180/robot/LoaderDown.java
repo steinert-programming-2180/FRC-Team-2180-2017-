@@ -8,11 +8,11 @@ public LoaderDown(){
 		
 	}
 	
-	protected void initalize(){
+	protected void initialize(){
 		
 	}
 	
-	protected void executed(){
+	protected void execute(){
 		Robot.loader.set(-0.5);
 	}
 	
