@@ -9,12 +9,12 @@ public Shooter(){
 		
 	}
 	
-	protected void initalize(){
+	protected void initialize(){
 		
 		
 	}
 	
-	protected void executed(){
+	protected void execute(){
 		//Robot.shooterMotor.set(1.0);
 		
 	}
