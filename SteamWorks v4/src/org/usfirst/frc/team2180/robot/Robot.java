@@ -98,7 +98,7 @@ public class Robot extends IterativeRobot {
 			right2.set(1.0);
 			right3.set(1.0);
 			
-			left1.set(1.0); // drive forwards half speed
+			left1.set(1.0); 
 			left2.set(1.0);
 			left3.set(1.0);
 			
@@ -118,7 +118,7 @@ public class Robot extends IterativeRobot {
 			right2.set(0.0);
 			right3.set(0.0);
 			
-			left1.set(0.0); // stop robot
+			left1.set(0.0); // stops wheels
 			left2.set(0.0);
 			left3.set(0.0);
 			
