@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 	public static CANTalon loader = new CANTalon(23); //button
 	public static CANTalon shooterMotor = new CANTalon(33); //need Hall effect (counter)
 	
-	public static CANTalon endGame = new CANTalon(17, 18);
+	public static CANTalon endGame = new CANTalon(17, 18); //two motors
 	
 	public static CANTalon gearPickUp = new CANTalon(29);
 	
@@ -138,6 +138,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		volt0 = ultrasonicAI.getAverageVoltage();
+		
+		fs0 = String.format("%6.1f ft", (volt0/(5.0/1024.0))*0.0328084);
+		SmartDashboard.putString("DB/String 6", fs0); 
+		
 		right1.set(rightDriver.getRawAxis(1));
 		right2.set(rightDriver.getRawAxis(1));
 		right3.set(rightDriver.getRawAxis(1));
@@ -158,12 +163,6 @@ public class Robot extends IterativeRobot {
 		loaderDown.whenPressed(new LoaderDown());
 		
 		shooterButton.whenPressed(new Shooter());
-		
-		
-		volt0 = ultrasonicAI.getAverageVoltage();
-		
-		fs0 = String.format("%6.1f ft", (volt0/(5.0/1024.0))*0.0328084);
-		SmartDashboard.putString("DB/String 6", fs0);
 	}
 
 	/**
