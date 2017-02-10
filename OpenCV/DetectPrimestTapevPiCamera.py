@@ -48,6 +48,13 @@ for rawFrame in camera.capture_continuous(rawCapture, format="bgr", use_video_po
             sd.putNumber('center y', center[1])
             print(str(count) + ": (" + str(sd.getNumber('center x')) + ', ' + str(sd.getNumber('center y')) + ')')
             print(str(w) + 'x' + str(h))
+
+            if center[0] < width / 2:
+                print('Left')
+            elif center[0] > width / 2:
+                print('Right')
+            else:
+                print('Center')
             	
     #cv2.imshow('Frame', frame)
     count += 1
@@ -55,6 +62,6 @@ for rawFrame in camera.capture_continuous(rawCapture, format="bgr", use_video_po
     rawCapture.truncate(0)
 	
     if cv2.waitKey(1) & 0xFF == ord('q'):
-	    break
+        break
 	    
 cv2.destroyAllWindows()
