@@ -3,18 +3,22 @@ package org.usfirst.frc.team2180.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team2180.robot.ExpandTalon.CANTalonRot;
-import org.usfirst.frc.team2180.robot.ExpandTalon.ClosedSystem;
-import org.usfirst.frc.team2180.robot.commands.ExampleCommand;
+
 import org.usfirst.frc.team2180.robot.subsystems.ExampleSubsystem;
 
 import com.ctre.CANTalon;
+
+import org.usfirst.frc.team2180.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2180.robot.commands.GearPickup0;
+import org.usfirst.frc.team2180.robot.commands.GearPickup1;
+import org.usfirst.frc.team2180.robot.commands.GearPickup2;
+import org.usfirst.frc.team2180.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,30 +30,14 @@ import com.ctre.CANTalon;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static int MoE = 3;
 	public static OI oi;
+	public Joystick stick0 = new Joystick(0);
+	public JoystickButton GearBox0 = new JoystickButton(stick0,4);
+	public JoystickButton GearBox1 = new JoystickButton(stick0,3);
+	public JoystickButton GearBox2 = new JoystickButton(stick0,5);
+	public static CANTalon gear = new CANTalon(11);
 	Command autonomousCommand;
-	Joystick stick0 = new Joystick(0);
-	Joystick stick1 = new Joystick(1);
-	Timer timer = new Timer();
-	
-	int MoE = 1;
-	double MotorTurnSped = 0.1;
-	//Offset of each motor--See CANTalonRot class
-	int FLoff = 836;
-	int FRoff = 573;
-	int BLoff = 678;
-	int BRoff = 937;
-	//CANTalonRot object--See CANTalonRot class
-	CANTalon motorFR = new CANTalon(10);
-	CANTalonRot motorFRt = new CANTalonRot(new CANTalon(11)); 
-	CANTalon motorFL = new CANTalon(20);
-	CANTalon motorBL = new CANTalon(30);
-	CANTalon motorBR = new CANTalon(40);
-	
-	//ClosedSystem object--See ClosedSystem class
-	//This is the angle the wheels will seek
-	
-	public int sensitivity=3;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -62,7 +50,6 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
-		
 	}
 
 	/**
@@ -101,8 +88,9 @@ public class Robot extends IterativeRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-
+		
 		// schedule the autonomous command (example)
+		
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}
@@ -113,6 +101,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		
 	}
 
 	@Override
@@ -130,6 +119,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		GearBox0.whenPressed(new GearPickup0());
+		GearBox1.whenPressed(new GearPickup1());
+		GearBox2.whenPressed(new GearPickup2());
 		Scheduler.getInstance().run();
 	}
 
@@ -139,5 +131,35 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+	}
+	
+	//GHETTO FANTASTIC CODE
+	public static double seekDir(int EncoderVal, int desiredVal, double speed){
+		double sped;
+		if(iformat(gear.getAnalogInRaw()+MoE)>desiredVal){
+			sped=speed;
+		}else if(iformat(gear.getAnalogInRaw()+MoE)>desiredVal){
+			sped=-speed;
+		}else{
+			sped=0.0;
+		}
+		return sped;
+	}
+	
+	public static int iformat(int valu){
+		boolean inFormat = false;
+		int value=valu;
+		while(!inFormat){
+			if(value<=0){
+				inFormat=false;
+				value = value+1023;
+			}else if(value>=1023){
+				inFormat=false;
+				value = value-1023;
+			}else{
+				inFormat = true;
+			}
+		}
+		return value;
 	}
 }
