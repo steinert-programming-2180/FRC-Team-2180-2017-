@@ -3,12 +3,14 @@ package org.usfirst.frc.team2180.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import org.usfirst.frc.team2180.robot.ExpandTalon.CANTalonRot;
+import org.usfirst.frc.team2180.robot.ExpandTalon.ClosedSystem;
 import org.usfirst.frc.team2180.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2180.robot.subsystems.ExampleSubsystem;
 
@@ -26,24 +28,27 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 	Command autonomousCommand;
-	public static Joystick stick0 = new Joystick(0);
-	public static Joystick stick1 = new Joystick(1);
+	Joystick stick0 = new Joystick(0);
+	Joystick stick1 = new Joystick(1);
+	Timer timer = new Timer();
 	
-	public int MoE = 1;
-	public double MotorTurnSped = 0.1;
+	int MoE = 1;
+	double MotorTurnSped = 0.1;
 	//Offset of each motor--See CANTalonRot class
-	public int FLoff = 836;
-	public int FRoff = 573;
-	public int BLoff = 678;
-	public int BRoff = 937;
+	int FLoff = 836;
+	int FRoff = 573;
+	int BLoff = 678;
+	int BRoff = 937;
 	//CANTalonRot object--See CANTalonRot class
-	public CANTalon motorFR = new CANTalon(10);
-	public CANTalon motorFL = new CANTalon(20);
-	public CANTalon motorBL = new CANTalon(30);
-	public CANTalon motorBR = new CANTalon(40);
+	CANTalon motorFR = new CANTalon(10);
+	CANTalonRot motorFRt = new CANTalonRot(new CANTalon(11)); 
+	CANTalon motorFL = new CANTalon(20);
+	CANTalon motorBL = new CANTalon(30);
+	CANTalon motorBR = new CANTalon(40);
 	
 	//ClosedSystem object--See ClosedSystem class
 	//This is the angle the wheels will seek
+	
 	public int sensitivity=3;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
