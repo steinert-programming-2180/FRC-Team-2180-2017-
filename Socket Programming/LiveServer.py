@@ -23,16 +23,16 @@ print('Socket bind complete')
 s.listen(10)
 print('Socket now listening')
 
-while 1:
+while True:
     conn, addr = s.accept()
     print('Connected with ' + addr[0] + ':' + str(addr[1]))
     
-    data = conn.recv(1024)
-    reply = 'OK... ' + str(data)
+    data = conn.recv(1024).decode()
+    reply = "OK... " + data
     if not data:
         break
     
-    conn.sendall(reply)
+    conn.sendall(reply.encode())
 
 conn.close()
 s.close()
