@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 
 
@@ -37,6 +39,9 @@ public class Robot extends IterativeRobot {
 	public Joystick left,right;;
 	private static final int kUltrasonicPort = 0;
 	private AnalogInput ultrasonicAI = new AnalogInput(kUltrasonicPort);
+	public Joystick left = new Joystick(0);
+	public JoysticButton thirtyDegrees = new JoystickButton(1);
+	NetworkTable table;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -59,6 +64,8 @@ public class Robot extends IterativeRobot {
 		steer4= new CANTalon(41);
 		left= new Joystick(0);
 		right= new Joystick(1);
+		table = NetworkTable.getTable("datatable");
+		System.out.println("datatable = " + degrees);	
 		
 		
 		SmartDashboard.putData("Auto mode", chooser);
@@ -125,15 +132,10 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 		
 		
-	}
-
-	/**
-	 * This function is called periodically during operator control
-	 */
-	@Override
-	public void teleopPeriodic() {
 		pos= pot.getAverageValue();
 		volts0 = ultrasonicAI.getAverageVoltage();
+		
+		thirtyDegrees.whenPressed(new )
 		
 		steer1.set(right.getRawAxis(0)*.5);
 		steer2.set(right.getRawAxis(0)*.5);
@@ -166,6 +168,13 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putString("DB/String 9", fs4);
 		SmartDashboard.putString("DB/String 6", fs0);
 		SmartDashboard.putNumber("position from pot", pos);
+	}
+
+	/**
+	 * This function is called periodically during operator control
+	 */
+	@Override
+	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
