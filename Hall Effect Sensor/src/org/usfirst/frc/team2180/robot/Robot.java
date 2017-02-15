@@ -124,8 +124,8 @@ public class Robot extends IterativeRobot {
 		right.set(Tankright.getRawAxis(1));
 		left.set(Tankleft.getRawAxis(1));
 		
-		fs0 = String.format("rate %r rpm", rate);
-		fs1 = String.format("period %c count", period);
+		fs0 = String.format("rate %f rpm", rate);
+		fs1 = String.format("period %f count", period);
 		
 		SmartDashboard.putString("DB/String 0", fs0);
 		SmartDashboard.putString("DB/String 1", fs1);
