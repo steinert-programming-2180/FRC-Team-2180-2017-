@@ -49,7 +49,7 @@ public class Robot extends IterativeRobot {
 	public static CANTalon shooterMotor1 = new CANTalon(17);
 	public static CANTalon shooterMotor2 = new CANTalon(27);
 	
-	CANTalon endGameMotor = new CANTalon(29);
+	CANTalon endGameMotor1 = new CANTalon(29);
 	CANTalon endGameMotor2 = new CANTalon(39);
 	
 	public static CANTalon gearPickUp = new CANTalon(33);
@@ -105,6 +105,9 @@ public class Robot extends IterativeRobot {
 		shooterMotor1.changeControlMode(CANTalon.TalonControlMode.Follower);
 		//shooterMotor1.set(customMotorDescrip.getDeviceID(shooterMotor2));
 		shooterMotor1.set(shooterMotor2.getDeviceID());
+		
+		endGameMotor1.changeControlMode(CANTalon.TalonControlMode.Follower);
+		endGameMotor1.set(endGameMotor2.getDeviceID());
 		
 		gearPickUp.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Absolute);
 		shooterMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
