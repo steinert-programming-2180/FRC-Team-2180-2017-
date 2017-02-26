@@ -103,7 +103,8 @@ public class Robot extends IterativeRobot {
 		}).start();
 		
 		shooterMotor1.changeControlMode(CANTalon.TalonControlMode.Follower);
-		shooterMotor1.set(customMotorDescrip.getDeviceID(shooterMotor2));
+		//shooterMotor1.set(customMotorDescrip.getDeviceID(shooterMotor2));
+		shooterMotor1.set(shooterMotor2.getDeviceID());
 		
 		gearPickUp.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Absolute);
 		shooterMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
