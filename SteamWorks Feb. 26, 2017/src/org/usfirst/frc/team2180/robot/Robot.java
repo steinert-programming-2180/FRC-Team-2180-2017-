@@ -104,11 +104,15 @@ public class Robot extends IterativeRobot {
 		
 		gearPickUp.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Absolute);
 		autonomousCommand = new Spot1DropGearA();
+		
 		currentAngle = (((int)gearPickUp.getPulseWidthPosition())&0xFFF);
+		
 		seek1 = getSeekSped(2506);
 		seek2 = getSeekSped(1687);
 		seekHome = getSeekSped(3045);
+		
 		autoChooser = new SendableChooser<Command>();
+		
 		autoChooser.addDefault("Spot 1 Drop Gear A", new Spot1DropGearA());
 		autoChooser.addObject("Spot 2 Drop Gear B", new Spot2DropGearB());
 		autoChooser.addObject("Spot 3 Drop Gear C", new Spot3DropGearC());
