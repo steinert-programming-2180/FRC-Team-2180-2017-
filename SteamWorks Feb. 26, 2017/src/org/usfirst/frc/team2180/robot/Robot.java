@@ -110,7 +110,7 @@ public class Robot extends IterativeRobot {
 		endGameMotor1.set(endGameMotor2.getDeviceID());
 		
 		gearPickUp.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Absolute);
-		shooterMotor.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		shooterMotor1.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		
 		
 		
