@@ -10,18 +10,30 @@ public class PlaceGear extends Command {
 	}
 	
 	public void execute() {
+		Timer timer = new Timer();
+		timer.reset();
 		int pos = Robot.gearPickUp.getPulseWidthPosition() & 0xFFF;
 		while (pos > 2506) {
 			Robot.gearPickUp.set(-0.5);
-		} else {
-			Robot.gearPickUp.set(0.0);
 		}
 		
+		timer.start();
+		while(timer.get() < 0.25) {
+			Robot.left.set(0.5);
+			Robot.right.set(-0.5);
+		}
+		timer.stop();
+		timer.reset();
 		
+		while (pos > 1687) {
+			Robot.gearPickUp.set(-0.5);
+		}
 		
-		
-		
-		
+		timer.start();
+		while(timer.get() < 1) {
+			Robot.left.set(-1);
+			Robot.right.set(1);
+		}	
 	}
 	
 	protected boolean isFinished() {
