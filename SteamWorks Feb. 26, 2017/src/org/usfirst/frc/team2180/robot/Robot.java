@@ -41,8 +41,8 @@ public class Robot extends IterativeRobot {
 	public static CANTalon left2 = new CANTalon (25);
 	public static CANTalon left3 = new CANTalon (35);
 	
-	public static CANTalon left = new CANTalon(15, 25, 35);
-	public static CANTalon right = new CANTalon(10, 20, 30);
+	public static CANTalon left = new CANTalon(15, 25, 35); //test out left(Monday)
+	public static CANTalon right = new CANTalon(10, 20, 30); //test out right(Monday)
 	
 	public static CANTalon loader = new CANTalon (24);
 	
