@@ -192,7 +192,7 @@ public class Robot extends IterativeRobot {
 		left2.set(leftDriver.getRawAxis(1));
 		left3.set(leftDriver.getRawAxis(1));
 		
-		endGameMotor.set(payload.getRawAxis(1));
+		endGameMotor1.set(payload.getRawAxis(1));
 		endGameMotor2.set(payload.getRawAxis(1) * -1);
 	
 		if (payload.getRawButton(1)){
