@@ -49,9 +49,6 @@ public class Robot extends IterativeRobot {
 	public static CANTalon shooterMotor1 = new CANTalon(17);
 	public static CANTalon shooterMotor2 = new CANTalon(27);
 	
-	shooterMotor1.changeControlMode(CANTalon.ControlMode.Follower);
-	shooterMotor1.set(customMotorDescrip.getDeviceID(27));
-	
 	CANTalon endGameMotor = new CANTalon(29);
 	CANTalon endGameMotor2 = new CANTalon(39);
 	
