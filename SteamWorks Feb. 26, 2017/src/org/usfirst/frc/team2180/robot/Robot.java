@@ -70,12 +70,6 @@ public class Robot extends IterativeRobot {
 	public static double seek2 = 0;
 	public static double seekHome = 0;
 	
-	public static JoystickButton seek1But = new JoystickButton(payload, 3), 
-								 seek2But = new JoystickButton(payload, 4), 
-								 seekHomeBut = new JoystickButton(payload, 5),
-								 shooterButton = new JoystickButton(payload, 1),
-								 loaderButton = new JoystickButton(payload, 2);
-	
 	public static AnalogInput ultrasonicAI = new AnalogInput(0);
 	
 	Command autonomousCommand;
