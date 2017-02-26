@@ -195,19 +195,19 @@ public class Robot extends IterativeRobot {
 	
 		
 		if(payload.getRawButton(3)){
-			if(Math.abs(seek1)>60){
+			if((seek1)>60){
 				gearPickUp.set(Math.signum(seek1)*(-0.2));
 			}else{
 			gearPickUp.set(0.0);
 			}
 		}else if(payload.getRawButton(4)){
-			if(Math.abs(seek2)>60)
+			if((seek2)>60)
 				gearPickUp.set(Math.signum(seek2)*(0.2));
 			else{
 				gearPickUp.set(0.0);
 			}
 		}else if (payload.getRawButton(5)){
-			if (Math.abs(seekHome)>60){
+			if ((seekHome)>60){
 				gearPickUp.set(Math.signum(seekHome)*(-0.2));
 			}else{
 			gearPickUp.set(0.0);
