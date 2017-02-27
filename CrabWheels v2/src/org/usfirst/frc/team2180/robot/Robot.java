@@ -104,12 +104,12 @@ public class Robot extends IterativeRobot {
 //    	leftFrontDrive = driveMotors;
 //    	leftRearDrive = driveMotors;
     	
-    	for (CANTalon x: driveMotors) {
-    		x.set(right.getRawAxis(0)*0.2);
+    	for (int x = 0; x < driveMotors.length; i++) {
+    		x.set(driveMotors[i].getRawAxis(0)*0.2);
     	}
     	
-    	for (CANTalon x: steerMotors) {
-    		x.set(left.getRawAxis(2)*0.2);
+    	for (int x = 0; x < steerMotors.length; i++) {
+    		x.set(steerMotors[i].getRawAxis(2)*0.2);
     	}
     	
 //    	rightFrontSteer.set(left.getRawAxis(2)*.2);
