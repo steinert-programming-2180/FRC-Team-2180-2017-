@@ -27,7 +27,7 @@ public class Robot extends IterativeRobot {
 	CANTalon leftRearDrive;
 	CANTalon rightRearDrive;
 	
-	CANTalon[] driveMotors = {rightFrontDrive, leftFrontDrive, leftRearDrive, rightRearDrive};
+// 	CANTalon[] driveMotors = {rightFrontDrive, leftFrontDrive, leftRearDrive, rightRearDrive};
 	
 	//steer
 	CANTalon rightFrontSteer;
@@ -35,7 +35,7 @@ public class Robot extends IterativeRobot {
 	CANTalon leftRearSteer;
 	CANTalon rightRearSteer;
 	
-	CANTalon[] steerMotors = {rightFrontSteer, leftFrontSteer, leftRearSteer, rightRearSteer};
+// 	CANTalon[] steerMotors = {rightFrontSteer, leftFrontSteer, leftRearSteer, rightRearSteer};
 	
 	
 	int autoLoopCounter;
@@ -104,23 +104,23 @@ public class Robot extends IterativeRobot {
 //    	leftFrontDrive = driveMotors;
 //    	leftRearDrive = driveMotors;
     	
-    	for (int x = 0; x < driveMotors.length; i++) {
-    		x.set(driveMotors[i].getRawAxis(0)*0.2);
-    	}
+//     	for (int x = 0; x < driveMotors.length; i++) {
+//     		x.set(driveMotors[i].getRawAxis(0)*0.2);
+//     	}
     	
-    	for (int x = 0; x < steerMotors.length; i++) {
-    		x.set(steerMotors[i].getRawAxis(2)*0.2);
-    	}
+//     	for (int x = 0; x < steerMotors.length; i++) {
+//     		x.set(steerMotors[i].getRawAxis(2)*0.2);
+//     	}
     	
-//    	rightFrontSteer.set(left.getRawAxis(2)*.2);
-//    	leftFrontSteer.set(left.getRawAxis(2)*0.2);
-//    	leftRearSteer.set(left.getRawAxis(2)*0.2);
-//    	rightRearSteer.set(left.getRawAxis(2)*0.2);
+   	rightFrontSteer.set(left.getRawAxis(2)*.2);
+   	leftFrontSteer.set(left.getRawAxis(2)*0.2);
+   	leftRearSteer.set(left.getRawAxis(2)*0.2);
+   	rightRearSteer.set(left.getRawAxis(2)*0.2);
     	
-//    	rightFrontDrive.set(right.getRawAxis(0)*.2);
-//    	leftFrontDrive.set(right.getRawAxis(0)*.2);
-//    	leftRearDrive.set(right.getRawAxis(0)*.2);
-//    	rightRearDrive.set(right.getRawAxis(0)*0.2);
+   	rightFrontDrive.set(right.getRawAxis(0)*.2);
+   	leftFrontDrive.set(right.getRawAxis(0)*.2);
+   	leftRearDrive.set(right.getRawAxis(0)*.2);
+   	rightRearDrive.set(right.getRawAxis(0)*0.2);
     }
     
     /**
